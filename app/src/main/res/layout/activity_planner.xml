@@ -23,8 +23,7 @@
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:orientation="vertical"
-      >
+      android:orientation="vertical">
       
       <include layout="@layout/view_months_names"/>
       
@@ -34,6 +33,7 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:scrollbars="vertical"/>
+    
     </LinearLayout>
   </HorizontalScrollView>
 
