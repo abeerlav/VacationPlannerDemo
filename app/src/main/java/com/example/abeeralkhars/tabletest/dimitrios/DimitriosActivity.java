@@ -25,7 +25,6 @@ public class DimitriosActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dimitrios);
-        Log.i("main","hereeeeeeeeeee");
         List<EmployeeVacation> rowListItem = getAllEmployeesVacations();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DimitriosActivity.this);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
