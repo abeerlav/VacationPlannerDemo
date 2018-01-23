@@ -6,35 +6,52 @@
   android:orientation="horizontal"
   >
   
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/recycler_view_employee"
-    android:layout_width="80dp"
-    android:layout_height="wrap_content"
-    android:layout_alignBottom="@+id/horizontalScrollView"
-    android:layout_alignParentStart="true"
-    android:background="#fff"/>
-  
-  <HorizontalScrollView
-    android:id="@+id/horizontalScrollView"
+  <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_toEndOf="@id/recycler_view_employee">
+    android:layout_height="wrap_content">
     
     <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical">
+      android:layout_height="wrap_content">
       
-      <include layout="@layout/view_months_names"/>
+      <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <include layout="@layout/viewholder_row_header"/>
+        
+        <android.support.v7.widget.RecyclerView
+          android:id="@+id/recycler_view_employee"
+          android:layout_width="80dp"
+          android:layout_height="wrap_content"
+          android:background="#fff"/>
       
-      <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_employee_vacation"
+      </LinearLayout>
+      
+      <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:scrollbars="vertical"/>
+        android:layout_toEndOf="@id/recycler_view_employee">
+        
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+          
+          <include layout="@layout/view_months_names"/>
+          
+          <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_employee_vacation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:scrollbars="vertical"/>
+        </LinearLayout>
+      </HorizontalScrollView>
     
     </LinearLayout>
-  </HorizontalScrollView>
+  </ScrollView>
 
 </RelativeLayout>

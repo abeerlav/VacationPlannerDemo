@@ -12,11 +12,11 @@ import android.widget.Toast;
  * Created by abeeralkhars on 18/01/2018 AD.
  */
 
-public class RecyclerViewHolders extends RecyclerView.ViewHolder implements OnClickListener {
+public class RecyclerViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
     
     TextView janCell, febCell, marCell, aprCell, mayCell, junCell, julCell, augCell, SepCell, octCell, novCell, desCell;
     
-    public RecyclerViewHolders(View itemView) {
+    public RecyclerViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         janCell = (TextView) itemView.findViewById(R.id.jan_cell);

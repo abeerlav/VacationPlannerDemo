@@ -14,10 +14,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     
-    private LinearLayoutManager linearLayoutManager;
-    private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager,linearLayoutManagerEmployee;
+    private RecyclerView recyclerViewEmployeeVacation, recyclerViewEmployee;
     private RecyclerViewAdapter recyclerViewAdapter;
-    
+    private EmployeeAdapter employeeAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +25,30 @@ public class MainActivity extends AppCompatActivity {
         
         List<EmployeeVacation> rowListItem = getAllEmployeesVacations();
         
-        linearLayoutManager = new LinearLayoutManager(MainActivity.this);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_employee_vacation);
+        linearLayoutManager = new LinearLayoutManager(MainActivity.this){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        linearLayoutManagerEmployee= new LinearLayoutManager(MainActivity.this){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+    
+        recyclerViewEmployeeVacation = (RecyclerView) findViewById(R.id.recycler_view_employee_vacation);
+        recyclerViewEmployee = (RecyclerView) findViewById(R.id.recycler_view_employee);
+        
+        employeeAdapter = new EmployeeAdapter(MainActivity.this, rowListItem);
+        recyclerViewEmployee.setLayoutManager(linearLayoutManagerEmployee);
+        recyclerViewEmployee.setAdapter(employeeAdapter);
+        
+        
         recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewEmployeeVacation.setLayoutManager(linearLayoutManager);
+        recyclerViewEmployeeVacation.setAdapter(recyclerViewAdapter);
     }
     
     
@@ -52,6 +71,24 @@ public class MainActivity extends AppCompatActivity {
         List<EmployeeVacation> employeeVacationList = new ArrayList<EmployeeVacation>();
         employeeVacationList.add(employeeA);
         employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeA);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeB);
+    
         return employeeVacationList;
         
     }

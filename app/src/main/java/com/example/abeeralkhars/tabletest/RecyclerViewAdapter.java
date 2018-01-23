@@ -17,7 +17,7 @@ import java.util.List;
  * Created by abeeralkhars on 18/01/2018 AD.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     
     private final String JAN = "Jan";
     private final String FEB = "Feb";
@@ -41,15 +41,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     }
     
     @Override
-    public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.i("viewType", String.valueOf(viewType));
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_planner_row_item, null);
-        RecyclerViewHolders rcv = new RecyclerViewHolders(layoutView);
+        RecyclerViewHolder rcv = new RecyclerViewHolder(layoutView);
         return rcv;
     }
     
     @Override
-    public void onBindViewHolder(RecyclerViewHolders holder, int position) {
+    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         EmployeeVacation employeeVacation = rowList.get(position);
         System.out.println("employee position: " + position + " "+employeeVacation.getEmployeeName());
         ArrayList<Vacation> vacationList = (ArrayList<Vacation>) employeeVacation.getVacationList();
