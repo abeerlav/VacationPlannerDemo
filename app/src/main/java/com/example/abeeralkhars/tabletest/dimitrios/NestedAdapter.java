@@ -2,7 +2,6 @@ package com.example.abeeralkhars.tabletest.dimitrios;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,72 +36,69 @@ public class NestedAdapter extends RecyclerView.Adapter<NestedViewHolder> {
     public NestedAdapter(List<Vacation> vacationList, Context context) {
         this.vacationList = vacationList;
         this.context = context;
- 
+        
     }
     
     @Override
     public NestedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
- 
+        
         return NestedViewHolder.newInstance(parent);
     }
     
     @Override
     public void onBindViewHolder(NestedViewHolder holder, int position) {
         ArrayList<Vacation> vacations = (ArrayList<Vacation>) vacationList;
-    
+        
         for (Vacation vacation : vacations) {
-      
+            
             switch (vacation.getStartDate()) {
                 case JAN:
                     holder.janCell.setText("*");
-    
+                    
                     break;
                 case FEB:
                     holder.febCell.setText("*");
-    
+                    
                     break;
                 case MAR:
                     holder.marCell.setText("*");
-    
+                    
                     break;
                 case APR:
                     holder.aprCell.setText("*");
-    
+                    
                     break;
                 case MAY:
                     holder.mayCell.setText("*");
-    
+                    
                     break;
                 case JUN:
                     holder.junCell.setText("*");
-    
+                    
                     break;
                 case JUL:
                     holder.julCell.setText("*");
-    
+                    
                     break;
                 case AUG:
                     holder.augCell.setText("*");
-    
+                    
                     break;
                 case SEP:
                     holder.SepCell.setText("*");
-    
+                    
                     break;
                 case OCT:
                     holder.octCell.setText("*");
-    
+                    
                     break;
                 case NOV:
                     holder.novCell.setText("*");
-    
+                    
                     break;
                 case DEC:
                     holder.desCell.setText("*");
-    
                     break;
-    
-    
             }
         }
     }
@@ -125,7 +121,7 @@ public class NestedAdapter extends RecyclerView.Adapter<NestedViewHolder> {
         
         public NestedViewHolder(View itemView) {
             super(itemView);
-      
+            
             janCell = (TextView) itemView.findViewById(R.id.jan_cell);
             
             febCell = (TextView) itemView.findViewById(R.id.feb_cell);
@@ -157,5 +153,5 @@ public class NestedAdapter extends RecyclerView.Adapter<NestedViewHolder> {
         }
     }
     
-   
+    
 }

@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.i("viewType", String.valueOf(viewType));
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_planner_row_item, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_planner_row_item, parent, false);
         RecyclerViewHolder rcv = new RecyclerViewHolder(layoutView);
         return rcv;
     }
@@ -51,7 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         EmployeeVacation employeeVacation = rowList.get(position);
-        System.out.println("employee position: " + position + " "+employeeVacation.getEmployeeName());
+        System.out.println("employee position: " + position + " " + employeeVacation.getEmployeeName());
         ArrayList<Vacation> vacationList = (ArrayList<Vacation>) employeeVacation.getVacationList();
         
         for (Vacation vacation : vacationList) {

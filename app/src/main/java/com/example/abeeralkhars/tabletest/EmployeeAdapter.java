@@ -15,7 +15,8 @@ import java.util.List;
  * Created by abeeralkhars on 23/01/2018 AD.
  */
 
-public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder>{
+public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
+    
     private List<EmployeeVacation> rowList;
     private Context context;
     
@@ -23,32 +24,32 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder>{
         this.rowList = item;
         this.context = context;
     }
-        @Override
-        public EmployeeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            Log.i("viewType", String.valueOf(viewType));
-            View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.employee_viewholder, null);
-            EmployeeViewHolder rcv = new EmployeeViewHolder(layoutView);
-            return rcv;
-        }
+    
+    @Override
+    public EmployeeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.i("viewType", String.valueOf(viewType));
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.employee_viewholder, parent, false);
+        EmployeeViewHolder rcv = new EmployeeViewHolder(layoutView);
+        return rcv;
+    }
     
     @Override
     public void onBindViewHolder(EmployeeViewHolder holder, int position) {
         EmployeeVacation employeeVacation = rowList.get(position);
-        System.out.println("employee position: " + position + " "+employeeVacation.getEmployeeName());
+        System.out.println("employee position: " + position + " " + employeeVacation.getEmployeeName());
         holder.name.setText(employeeVacation.getEmployeeName());
         
     }
     
     
-    
-        @Override
-        public int getItemViewType(int position) {
-            super.getItemViewType(position);
-            return position;
-        }
-    
-        @Override
-        public int getItemCount() {
-            return this.rowList.size();
-        }
+    @Override
+    public int getItemViewType(int position) {
+        super.getItemViewType(position);
+        return position;
     }
+    
+    @Override
+    public int getItemCount() {
+        return this.rowList.size();
+    }
+}

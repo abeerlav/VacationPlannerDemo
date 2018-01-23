@@ -1,26 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
- 
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="horizontal">
+  
   <LinearLayout
-    android:layout_width="match_parent"
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+    
     <TextView
-      android:layout_height="match_parent"
-      android:layout_width="80dp"
+      android:layout_width="@dimen/global_cell_width"
+      android:layout_height="@dimen/global_cell_height"
       android:background="@drawable/border_grey"
-      android:padding="10dp"
       android:gravity="center"
-      android:text="Des"/>
-    <include layout="@layout/view_months_names"/>
- 
+      android:text="2018"/>
+    
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/recyclerUsers"
+      android:layout_width="@dimen/global_cell_width"
+      android:layout_height="wrap_content"
+      tools:listitem="@layout/employee_viewholder"/>
+  
   </LinearLayout>
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/recycler"
+  
+  <HorizontalScrollView
+    android:id="@+id/horizontalScrollView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+    android:layout_height="wrap_content">
+    
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+      
+      <include layout="@layout/view_months_names"/>
+      
+      <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerVacationGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+    
+    </LinearLayout>
+  
+  </HorizontalScrollView>
 
 </LinearLayout>

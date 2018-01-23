@@ -1,113 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:orientation="horizontal"
-  android:id="@+id/months_names">
+  android:id="@+id/months_names"
+  android:layout_width="wrap_content"
+  android:layout_height="@dimen/global_cell_height"
+  android:orientation="horizontal">
   
   <TextView
-    android:layout_width="80dp"
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
     android:background="@drawable/border_grey"
     android:gravity="center"
-    android:padding="10dp"
     android:text="Jan"
     />
   
   <TextView
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Feb"/>
   
   <TextView
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Mar"/>
   
   <TextView
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Apr"/>
   
   <TextView
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="May"/>
   
   <TextView
-  
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Jun"/>
   
   <TextView
-  
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Jul"/>
   
   <TextView
-
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Aug"/>
   
   <TextView
-   
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Sep"/>
   
   <TextView
-  
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Oct"/>
   
   <TextView
-
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Nov"/>
   
   <TextView
-
+    android:layout_width="@dimen/global_cell_width"
     android:layout_height="match_parent"
-    android:layout_width="80dp"
     android:background="@drawable/border_grey"
-    android:padding="10dp"
     android:gravity="center"
     android:text="Dec"/>
-  
+
 </LinearLayout>

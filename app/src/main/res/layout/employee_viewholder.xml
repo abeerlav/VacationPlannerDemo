@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="80dp"
-  android:layout_height="80dp"
-  >
+  android:layout_width="@dimen/global_cell_width"
+  android:layout_height="@dimen/global_cell_height"
+  android:layout_gravity="center"
+  android:gravity="center"
+  android:background="@drawable/border_grey"
+  android:orientation="vertical">
   
-  <RelativeLayout
-    android:layout_width="80dp"
-    android:layout_height="80dp"
-    android:layout_gravity="center"
-    android:orientation="vertical">
-    
-    <ImageView
-      android:id="@+id/employee_photo"
-      android:layout_width="30dp"
-      android:layout_height="30dp"
-      android:layout_above="@+id/employee_name"
-      android:layout_centerHorizontal="true"
-      android:layout_gravity="center"
-      android:background="@color/colorAccent"/>
-    
-    <TextView
-      android:id="@+id/employee_name"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      android:layout_centerHorizontal="true"
-      android:layout_marginBottom="11dp"
-      android:text="TextView"/>
-  </RelativeLayout>
-</android.support.v7.widget.CardView>
+  <ImageView
+    android:id="@+id/employee_photo"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:background="@color/colorAccent"/>
+  
+  <TextView
+    android:id="@+id/employee_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="TextView"/>
+</LinearLayout>

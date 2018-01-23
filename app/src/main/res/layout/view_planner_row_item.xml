@@ -1,109 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    >
-    
-    <TextView
-      android:id="@+id/jan_cell"
-      android:layout_width="80dp"
-      android:layout_height="80dp"
-      android:background="@drawable/border_grey"
-      android:gravity="center"
-      android:padding="10dp"/>
-    
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/feb_cell"
-      android:background="@drawable/border_grey"
-      />
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/mar_cell"
-      android:background="@drawable/border_grey"
-      />
-    
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/apr_cell"
-      android:background="@drawable/border_grey"
-      />
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/may_cell"
-      android:background="@drawable/border_grey"
-      />
-    <TextView
-      android:layout_height="80dp"
-      android:padding="10dp"
-      android:layout_width="80dp"
-      android:gravity="center"
-      android:id="@+id/jun_cell"
-      android:background="@drawable/border_grey"
-      />
-    
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/jul_cell"
-      android:background="@drawable/border_grey"
-      />
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/aug_cell"
-      android:background="@drawable/border_grey"
-      />
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/sep_cell"
-      android:background="@drawable/border_grey"
-      />
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/oct_cell"
-      android:background="@drawable/border_grey"
-      />
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/nov_cell"
-      android:background="@drawable/border_grey"
-      />
-    
-    <TextView
-      android:layout_height="80dp"
-      android:layout_width="80dp"
-      android:padding="10dp"
-      android:gravity="center"
-      android:id="@+id/des_Cell"
-      android:background="@drawable/border_grey"
-      />
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="@dimen/global_cell_height"
+  android:orientation="horizontal"
+  >
   
-  </LinearLayout>
+  <TextView
+    android:id="@+id/jan_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"/>
+  
+  <TextView
+    android:id="@+id/feb_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/mar_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/apr_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/may_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/jun_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/jul_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/aug_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/sep_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/oct_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/nov_cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+  
+  <TextView
+    android:id="@+id/des_Cell"
+    android:layout_width="@dimen/global_cell_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_grey"
+    android:gravity="center"
+    android:padding="10dp"
+    />
+
+</LinearLayout>

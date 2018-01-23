@@ -1,14 +1,14 @@
 package com.example.abeeralkhars.tabletest.dimitrios;
 
 import android.os.Bundle;
-import android.provider.Settings.System;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.widget.HorizontalScrollView;
 
-import com.example.abeeralkhars.tabletest.MainActivity;
+import com.example.abeeralkhars.tabletest.EmployeeAdapter;
 import com.example.abeeralkhars.tabletest.R;
 import com.example.abeeralkhars.tabletest.RecyclerViewAdapter;
 import com.example.abeeralkhars.tabletest.model.EmployeeVacation;
@@ -19,24 +19,62 @@ import java.util.List;
 
 /** Created by dimitrios on 22/01/2018. */
 
-public class DimitriosActivity extends AppCompatActivity{
+public class DimitriosActivity extends AppCompatActivity {
+    
+    RecyclerView usersRecyclerView;
+    RecyclerView vacationGridRecycler;
+    HorizontalScrollView horizontalScrollView;
+    int previousScroll = 0;
+    
+    private boolean scrollingUpdatePending;
     
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dimitrios);
-        List<EmployeeVacation> rowListItem = getAllEmployeesVacations();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DimitriosActivity.this);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
-        DimitriosAdapter recyclerViewAdapter = new DimitriosAdapter(rowListItem,DimitriosActivity.this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(recyclerViewAdapter);
+        bindViews();
     }
+    
+    private void bindViews() {
+        usersRecyclerView = findViewById(R.id.recyclerUsers);
+        usersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        vacationGridRecycler = findViewById(R.id.recyclerVacationGrid);
+        horizontalScrollView = findViewById(R.id.horizontalScrollView);
+        
+        usersRecyclerView.setAdapter(new EmployeeAdapter(this, getAllEmployeesVacations()));
+        vacationGridRecycler.setAdapter(new RecyclerViewAdapter(this, getAllEmployeesVacations()));
+        
+        vacationGridRecycler.addOnScrollListener(new OnScrollListener() {
+            
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (!scrollingUpdatePending) {
+                    scrollingUpdatePending = true;
+                    usersRecyclerView.scrollBy(dx, dy);
+                    scrollingUpdatePending = false;
+                }
+            }
+        });
+        
+        usersRecyclerView.addOnScrollListener(new OnScrollListener() {
+            
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (!scrollingUpdatePending) {
+                    scrollingUpdatePending = true;
+                    vacationGridRecycler.scrollBy(dx, dy);
+                    scrollingUpdatePending = false;
+                }
+            }
+        });
+        
+    }
+    
     private List<EmployeeVacation> getAllEmployeesVacations() {
         List<Vacation> aEmployeeVacation = new ArrayList<Vacation>();
         List<Vacation> bEmployeeVacation = new ArrayList<Vacation>();
-        List<Vacation> cEmployeeVacation = new ArrayList<Vacation>();
-        List<Vacation> dEmployeeVacation = new ArrayList<Vacation>();
         
         aEmployeeVacation.add(new Vacation("Jan", "Jan", "type1"));
         aEmployeeVacation.add(new Vacation("Mar", "apr", "type2"));
@@ -50,23 +88,9 @@ public class DimitriosActivity extends AppCompatActivity{
         
         List<EmployeeVacation> employeeVacationList = new ArrayList<EmployeeVacation>();
         employeeVacationList.add(employeeA);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        employeeVacationList.add(employeeB);
-        
+        for (int i = 0; i < 20; i++) {
+            employeeVacationList.add(employeeB);
+        }
         return employeeVacationList;
         
     }
