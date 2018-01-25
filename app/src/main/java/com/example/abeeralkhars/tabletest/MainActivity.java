@@ -14,30 +14,33 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     
-    private LinearLayoutManager linearLayoutManager,linearLayoutManagerEmployee;
+    private LinearLayoutManager linearLayoutManager, linearLayoutManagerEmployee;
     private RecyclerView recyclerViewEmployeeVacation, recyclerViewEmployee;
     private RecyclerViewAdapter recyclerViewAdapter;
     private EmployeeAdapter employeeAdapter;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planner);
         
-        List<EmployeeVacation> rowListItem = getAllEmployeesVacations();
+        /*List<EmployeeVacation> rowListItem = getAllEmployeesVacations();
         
-        linearLayoutManager = new LinearLayoutManager(MainActivity.this){
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
-        linearLayoutManagerEmployee= new LinearLayoutManager(MainActivity.this){
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
+        linearLayoutManager = new LinearLayoutManager(MainActivity.this) {
     
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        linearLayoutManagerEmployee = new LinearLayoutManager(MainActivity.this) {
+    
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        
         recyclerViewEmployeeVacation = (RecyclerView) findViewById(R.id.recycler_view_employee_vacation);
         recyclerViewEmployee = (RecyclerView) findViewById(R.id.recycler_view_employee);
         
@@ -46,14 +49,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewEmployee.setAdapter(employeeAdapter);
         
         
-        recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
+        // recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, rowListItem);
         recyclerViewEmployeeVacation.setLayoutManager(linearLayoutManager);
         recyclerViewEmployeeVacation.setAdapter(recyclerViewAdapter);
+        */
     }
     
-    
-    private List<EmployeeVacation> getAllEmployeesVacations() {
-        List<Vacation> aEmployeeVacation = new ArrayList<Vacation>();
+}
+  /*  private List<EmployeeVacation> getAllEmployeesVacations() {
+     List<Vacation> aEmployeeVacation = new ArrayList<Vacation>();
         List<Vacation> bEmployeeVacation = new ArrayList<Vacation>();
         List<Vacation> cEmployeeVacation = new ArrayList<Vacation>();
         List<Vacation> dEmployeeVacation = new ArrayList<Vacation>();
@@ -93,4 +97,5 @@ public class MainActivity extends AppCompatActivity {
         
     }
     
-}
+}*/
+

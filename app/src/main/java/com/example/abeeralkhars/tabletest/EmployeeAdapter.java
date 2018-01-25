@@ -27,7 +27,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
     
     @Override
     public EmployeeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.i("viewType", String.valueOf(viewType));
+ 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.employee_viewholder, parent, false);
         EmployeeViewHolder rcv = new EmployeeViewHolder(layoutView);
         return rcv;
@@ -36,7 +36,6 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
     @Override
     public void onBindViewHolder(EmployeeViewHolder holder, int position) {
         EmployeeVacation employeeVacation = rowList.get(position);
-        System.out.println("employee position: " + position + " " + employeeVacation.getEmployeeName());
         holder.name.setText(employeeVacation.getEmployeeName());
         
     }

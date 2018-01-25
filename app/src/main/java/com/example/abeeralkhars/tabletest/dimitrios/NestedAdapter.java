@@ -51,7 +51,9 @@ public class NestedAdapter extends RecyclerView.Adapter<NestedViewHolder> {
         
         for (Vacation vacation : vacations) {
             
-            switch (vacation.getStartDate()) {
+     /*
+      switch (vacation.getStartDate()) {
+     
                 case JAN:
                     holder.janCell.setText("*");
                     
@@ -99,7 +101,8 @@ public class NestedAdapter extends RecyclerView.Adapter<NestedViewHolder> {
                 case DEC:
                     holder.desCell.setText("*");
                     break;
-            }
+                  
+            }   */
         }
     }
     

@@ -19,7 +19,6 @@ public class NestedViewHolder  extends RecyclerView.ViewHolder {
     
     public NestedViewHolder(View itemView) {
         super(itemView);
-        Log.i("nested", "viewholder");
         janCell = (TextView) itemView.findViewById(R.id.jan_cell);
         
         febCell = (TextView) itemView.findViewById(R.id.feb_cell);

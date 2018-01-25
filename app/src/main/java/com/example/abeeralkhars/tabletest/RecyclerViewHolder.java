@@ -14,31 +14,14 @@ import android.widget.Toast;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
     
-    TextView janCell, febCell, marCell, aprCell, mayCell, junCell, julCell, augCell, SepCell, octCell, novCell, desCell;
+    ImageView vacationCell;
     
     public RecyclerViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
-        janCell = (TextView) itemView.findViewById(R.id.jan_cell);
+        vacationCell = (ImageView) itemView.findViewById(R.id.vacation_cell);
         
-        febCell = (TextView) itemView.findViewById(R.id.feb_cell);
-        
-        marCell = (TextView) itemView.findViewById(R.id.mar_cell);
-        
-        aprCell = (TextView) itemView.findViewById(R.id.apr_cell);
-        
-        mayCell = (TextView) itemView.findViewById(R.id.may_cell);
-        
-        junCell = (TextView) itemView.findViewById(R.id.jun_cell);
-        julCell = (TextView) itemView.findViewById(R.id.jul_cell);
-        
-        augCell = (TextView) itemView.findViewById(R.id.aug_cell);
-        SepCell = (TextView) itemView.findViewById(R.id.sep_cell);
-        
-        octCell = (TextView) itemView.findViewById(R.id.oct_cell);
-        
-        novCell = (TextView) itemView.findViewById(R.id.nov_cell);
-        desCell = (TextView) itemView.findViewById(R.id.des_Cell);
+
         
     }
     

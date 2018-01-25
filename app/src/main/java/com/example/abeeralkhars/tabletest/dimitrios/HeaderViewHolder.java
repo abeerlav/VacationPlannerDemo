@@ -16,6 +16,9 @@ public class HeaderViewHolder extends RecyclerView.ViewHolder {
     public HeaderViewHolder(View itemView) {
         super(itemView);
     }
+    
+    
+    
     public static HeaderViewHolder newInstance(ViewGroup parent) {
         
         return new HeaderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_row_header, parent, false));

@@ -1,27 +1,29 @@
 package com.example.abeeralkhars.tabletest.model;
 
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+
 /**
  * Created by abeeralkhars on 22/01/2018 AD.
  */
 
 public class Vacation {
-    private String startDate;
-    private String endDate;
+    private int startDate;
+    private int endDate;
     private String vacationType;
     
-    public String getStartDate() {
+    public int getStartDate() {
         return startDate;
     }
     
-    public void setStartDate(String startDate) {
+    public void setStartDate(int startDate) {
         this.startDate = startDate;
     }
     
-    public String getEndDate() {
+    public int getEndDate() {
         return endDate;
     }
     
-    public void setEndDate(String endDate) {
+    public void setEndDate(int endDate) {
         this.endDate = endDate;
     }
     
@@ -33,7 +35,7 @@ public class Vacation {
         this.vacationType = vacationType;
     }
     
-    public Vacation(String startDate, String endDate, String vacationType) {
+    public Vacation(int startDate, int endDate, String vacationType) {
     
         this.startDate = startDate;
         this.endDate = endDate;
