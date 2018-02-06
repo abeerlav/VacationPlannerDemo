@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TableTest.iml" filepath="$PROJECT_DIR$/TableTest.iml" />
+      <module fileurl="file://C:\Users\Dimitrios\AndroidStudioProjects\VacationPlannerDemo\TableTest.iml" filepath="C:\Users\Dimitrios\AndroidStudioProjects\VacationPlannerDemo\TableTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/VacationPlannerDemo.iml" filepath="$PROJECT_DIR$/VacationPlannerDemo.iml" />
+      <module fileurl="file://C:\Users\Dimitrios\AndroidStudioProjects\VacationPlannerDemo\VacationPlannerDemo.iml" filepath="C:\Users\Dimitrios\AndroidStudioProjects\VacationPlannerDemo\VacationPlannerDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Dimitrios\AndroidStudioProjects\VacationPlannerDemo\app\app.iml" filepath="C:\Users\Dimitrios\AndroidStudioProjects\VacationPlannerDemo\app\app.iml" />
     </modules>
   </component>
 </project>

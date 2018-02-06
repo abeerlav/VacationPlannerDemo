@@ -1,18 +1,6 @@
 package com.example.abeeralkhars.tabletest;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,12 +12,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.Toast;
 
 import com.example.abeeralkhars.tabletest.model.EmployeeVacation;
 import com.example.abeeralkhars.tabletest.model.Vacation;
 
-import java.security.KeyStore.TrustedCertificateEntry;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -78,8 +64,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         return false;
     }
     
-    private void drawCellRectangles(int employeeIndex, int cell, LinearLayout frameLayout) {
-        
+    private void drawCellRectangles(int employeeIndex, int cell, FrameLayout frameLayout) {
         
         ArrayList<Vacation> vacations = (ArrayList<Vacation>) rowList.get(employeeIndex).getVacationList();
         
@@ -89,29 +74,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             int startDay = findDayOfDate(vacation.getStartDate());
             int endDay = findDayOfDate(vacation.getEndDate());
             
+            
             if (cell == startMonth && cell == endMonth) {
                 int marginStart = convertDpToPx(calculatePercentage(startDay));
-                int marginEnd = convertDpToPx(calculatePercentage(calculateMarginEnd(endDay)));
-                // here how I calaculate the width but it is not generating the correct size of rec, so I am using marginEnd instead.
-                //  int rectangleWidth= convertDpToPx(calculatePercentage(endDay-startDay));
-                drawRectangle(marginStart, marginEnd, frameLayout);
+                int rectangleWidth = convertDpToPx(calculatePercentage(endDay - startDay));
+                drawRectangle(marginStart, rectangleWidth, frameLayout);
                 
             } else if (cell == startMonth && cell != endMonth) {
                 int marginStart = convertDpToPx(calculatePercentage(startDay));
-                int marginEnd = 0;
-                drawRectangle(marginStart, marginEnd, frameLayout);
+                int rectangleWidth = convertDpToPx(calculatePercentage(30));
+                drawRectangle(marginStart, rectangleWidth, frameLayout);
                 
             } else if (cell == endMonth && cell != startMonth) {
                 int marginStart = 0;
-                int marginEnd = convertDpToPx(calculatePercentage(calculateMarginEnd(endDay)));
-                //  int rectangleWidth= convertDpToPx(calculatePercentage(startDay));
-                drawRectangle(marginStart, marginEnd, frameLayout);
+                int rectangleWidth = convertDpToPx(calculatePercentage(startDay));
+                drawRectangle(marginStart, rectangleWidth, frameLayout);
                 
             } else if (startMonth < cell && endMonth > cell) {
                 int marginStart = 0;
-                int marginEnd = 0;
-                
-                drawRectangle(marginStart, marginEnd, frameLayout);
+                int rectangleWidth = convertDpToPx(30);
+                drawRectangle(marginStart, rectangleWidth, frameLayout);
                 
             }
         }
@@ -147,12 +129,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         return 31 - endDay;
     }
     
-    private void drawRectangle(int marginStart, int marginEnd, LinearLayout layout) {
+    private void drawRectangle(int marginStart, int width, FrameLayout layout) {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(R.color.colorAccent);
-        LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, LayoutParams.MATCH_PARENT);
         params.setMarginStart(marginStart);
-        params.setMarginEnd(marginEnd);
         imageView.setLayoutParams(params);
         layout.addView(imageView);
     }
