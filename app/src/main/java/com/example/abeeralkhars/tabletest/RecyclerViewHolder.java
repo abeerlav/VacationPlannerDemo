@@ -4,7 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,12 +16,13 @@ import android.widget.Toast;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
     
-    ImageView vacationCell;
-    
+    LinearLayout vacationCell;
+
     public RecyclerViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
-        vacationCell = (ImageView) itemView.findViewById(R.id.vacation_cell);
+        vacationCell = (LinearLayout) itemView.findViewById(R.id.vacation_cell);
+      
         
 
         

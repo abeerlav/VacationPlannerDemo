@@ -1,15 +1,30 @@
 package com.example.abeeralkhars.tabletest;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
 
 import com.example.abeeralkhars.tabletest.model.EmployeeVacation;
 import com.example.abeeralkhars.tabletest.model.Vacation;
@@ -24,7 +39,7 @@ import java.util.List;
  * Created by abeeralkhars on 18/01/2018 AD.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> implements OnClickListener {
     
     private final int CELLS_COUNT = 12;
     private List<EmployeeVacation> rowList;
@@ -47,19 +62,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        
         if (isNewRow(position))
             rowIndex = position;
         int columnIndex = position - rowIndex;
         int employeeIndex = rowIndex / CELLS_COUNT;
-        //   holder.vacationCell.setText("P:"+String.valueOf(position)+" R:"+String.valueOf(rowIndex)+"  C:"+String.valueOf(columnIndex)+" E:"+String.valueOf(employeeIndex));
+        drawCellRectangles(employeeIndex, columnIndex, holder.vacationCell);
         
-        if (checkEmployeeVacationForMonth(employeeIndex, columnIndex)) {
-            Drawable rec = context.getResources().getDrawable(R.drawable.rectangle, context.getTheme());
-            // using gradientDrawable, we can modify rec param for the start and end day of the vacation
-            GradientDrawable gradientDrawable = (GradientDrawable) rec;
-            holder.vacationCell.setImageResource(R.drawable.rectangle);
-        }
     }
     
     private boolean isNewRow(int position) {
@@ -70,21 +78,83 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         return false;
     }
     
-    private boolean checkEmployeeVacationForMonth(int employeeIndex, int month) {
-        ArrayList<Vacation> vacations = (ArrayList<Vacation>) rowList.get(employeeIndex).getVacationList();
-        // in the MyGate app we need to get the day and the month in integer format form the date to make it works
-        for (Vacation vacation : vacations) {
-            int start = vacation.getStartDate();
-            int end = vacation.getEndDate();
-            if (month == start)
-                return true;
-            if (month == end)
-                return true;
-            if (start < month && end > month)
-                return true;
-        }
-        return false;
+    private void drawCellRectangles(int employeeIndex, int cell, LinearLayout frameLayout) {
         
+        
+        ArrayList<Vacation> vacations = (ArrayList<Vacation>) rowList.get(employeeIndex).getVacationList();
+        
+        for (Vacation vacation : vacations) {
+            int startMonth = findMonthOfDate(vacation.getStartDate());
+            int endMonth = findMonthOfDate(vacation.getEndDate());
+            int startDay = findDayOfDate(vacation.getStartDate());
+            int endDay = findDayOfDate(vacation.getEndDate());
+            
+            if (cell == startMonth && cell == endMonth) {
+                int marginStart = convertDpToPx(calculatePercentage(startDay));
+                int marginEnd = convertDpToPx(calculatePercentage(calculateMarginEnd(endDay)));
+                // here how I calaculate the width but it is not generating the correct size of rec, so I am using marginEnd instead.
+                //  int rectangleWidth= convertDpToPx(calculatePercentage(endDay-startDay));
+                drawRectangle(marginStart, marginEnd, frameLayout);
+                
+            } else if (cell == startMonth && cell != endMonth) {
+                int marginStart = convertDpToPx(calculatePercentage(startDay));
+                int marginEnd = 0;
+                drawRectangle(marginStart, marginEnd, frameLayout);
+                
+            } else if (cell == endMonth && cell != startMonth) {
+                int marginStart = 0;
+                int marginEnd = convertDpToPx(calculatePercentage(calculateMarginEnd(endDay)));
+                //  int rectangleWidth= convertDpToPx(calculatePercentage(startDay));
+                drawRectangle(marginStart, marginEnd, frameLayout);
+                
+            } else if (startMonth < cell && endMonth > cell) {
+                int marginStart = 0;
+                int marginEnd = 0;
+                
+                drawRectangle(marginStart, marginEnd, frameLayout);
+                
+            }
+        }
+        
+    }
+    
+    private int findMonthOfDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.MONTH);
+        
+    }
+    
+    private int findDayOfDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.DAY_OF_MONTH);
+    }
+    
+    private int convertDpToPx(int dp) {
+        float density = context.getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
+    }
+    
+    private int calculatePercentage(int num) {
+        if (num == 1)
+            return 0;
+        return (num * 100) / 30;
+        
+    }
+    
+    private int calculateMarginEnd(int endDay) {
+        return 31 - endDay;
+    }
+    
+    private void drawRectangle(int marginStart, int marginEnd, LinearLayout layout) {
+        ImageView imageView = new ImageView(context);
+        imageView.setImageResource(R.color.colorAccent);
+        LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        params.setMarginStart(marginStart);
+        params.setMarginEnd(marginEnd);
+        imageView.setLayoutParams(params);
+        layout.addView(imageView);
     }
     
     @Override
@@ -98,4 +168,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         return rowList.size() * CELLS_COUNT;
     }
     
+    
+    private int calculateMarginStart(LinearLayout layout, int day) {
+        
+        int count = layout.getChildCount();
+        if (count != 0) {
+            View child = layout.getChildAt(count - 1);
+            int width = child.getLayoutParams().width;
+            ViewGroup.MarginLayoutParams vlp = (MarginLayoutParams) child.getLayoutParams();
+            int rightMargin = vlp.getMarginStart();
+            System.out.println("width: " + (rightMargin + width));
+            return (rightMargin + width);
+        }
+        return -1;
+    }
+    
+    private int calculateWidth(int startDay, int endDay) {
+        return endDay - startDay;
+    }
+    
+    @Override
+    public void onClick(View view) {
+    
+    }
 }

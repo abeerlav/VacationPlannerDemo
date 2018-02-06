@@ -16,8 +16,12 @@ import com.example.abeeralkhars.tabletest.RecyclerViewAdapter;
 import com.example.abeeralkhars.tabletest.model.EmployeeVacation;
 import com.example.abeeralkhars.tabletest.model.Vacation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /** Created by dimitrios on 22/01/2018. */
 
@@ -58,6 +62,7 @@ public class VacationPlannerActivity extends AppCompatActivity {
                     scrollingUpdatePending = true;
                     usersRecyclerView.scrollBy(dx, dy);
                     scrollingUpdatePending = false;
+            
                 }
             }
         });
@@ -80,23 +85,25 @@ public class VacationPlannerActivity extends AppCompatActivity {
     private List<EmployeeVacation> getAllEmployeesVacations() {
         List<Vacation> aEmployeeVacation = new ArrayList<Vacation>();
         List<Vacation> bEmployeeVacation = new ArrayList<Vacation>();
-        
-        aEmployeeVacation.add(new Vacation(3, 7, "type1"));
-        aEmployeeVacation.add(new Vacation(1, 1, "type2"));
-        //  aEmployeeVacation.add(new Vacation(3,4, "type1"));
-        
-        bEmployeeVacation.add(new Vacation(0, 1, "type1"));
-        bEmployeeVacation.add(new Vacation(7, 8, "type1"));
-        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);
+        try {  aEmployeeVacation.add(new Vacation(dateFormat.parse("2018-01-5T00:00:00.000+03:00"), dateFormat.parse(
+                    "2018-01-15T00:00:00.000+03:00"), "type2"));
+    
+    
+            aEmployeeVacation.add(new Vacation(dateFormat.parse("2018-1-26T00:00:00.000+03:00")
+             , dateFormat.parse("2018-03-15T00:00:00.000+03:00"), "type1"));
+    
+          //  aEmployeeVacation.add(new Vacation(dateFormat.parse("2018-03-20T00:00:00.000+03:00"),
+          //      dateFormat.parse("2018-03-25T00:00:00.000+03:00"), "type2"));
+          
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         EmployeeVacation employeeA = new EmployeeVacation("Abeer", aEmployeeVacation);
-        EmployeeVacation employeeB = new EmployeeVacation("Sara", bEmployeeVacation);
-        
         List<EmployeeVacation> employeeVacationList = new ArrayList<EmployeeVacation>();
         employeeVacationList.add(employeeA);
-        employeeVacationList.add(employeeB);
-          employeeVacationList.add(employeeB);
-           employeeVacationList.add(employeeA);
-          employeeVacationList.add(employeeB);
+        employeeVacationList.add(employeeA);
+        employeeVacationList.add(employeeA);
         return employeeVacationList;
         
     }

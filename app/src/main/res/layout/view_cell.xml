@@ -5,14 +5,9 @@
   android:layout_height="@dimen/global_cell_height"
   android:paddingTop="10dp"
   android:paddingBottom="10dp"
- 
-  android:background="@drawable/border_grey"
   android:orientation="horizontal"
-  >
-  <ImageView
-    android:layout_width="100dp"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:id="@+id/vacation_cell"
-  />
+  android:id="@+id/vacation_cell"
+  android:background="@drawable/border_grey">
+
+
 </LinearLayout>
